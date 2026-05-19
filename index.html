@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Morning Brief — Sunday, May 17, 2026</title>
+  <title>Morning Brief — Monday, May 18, 2026</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -402,6 +402,61 @@
       color: var(--muted);
     }
 
+    /* ── News card extras ── */
+    .news-card-take {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 11px;
+      line-height: 1.5;
+      color: var(--accent);
+      margin-top: 6px;
+    }
+    .news-card-angle {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 11px;
+      line-height: 1.5;
+      color: var(--muted);
+      font-style: italic;
+      margin-top: 4px;
+    }
+
+    /* ── Newsletter card extras ── */
+    .newsletter-insight {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--accent);
+      margin-top: 6px;
+    }
+    .newsletter-angle {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 11px;
+      line-height: 1.5;
+      color: var(--muted);
+      font-style: italic;
+      margin-top: 4px;
+    }
+
+    /* ── Podcast key moments ── */
+    .podcast-moments {
+      list-style: none;
+      margin-top: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .podcast-moments li {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .moment-time {
+      font-weight: 600;
+      color: var(--accent);
+      margin-right: 6px;
+      font-variant-numeric: tabular-nums;
+    }
+
     /* ── Colophon ── */
     .colophon {
       border-top: 1px solid var(--border);
@@ -437,9 +492,9 @@
     <div class="masthead-kicker">Your personal daily intelligence</div>
     <div class="masthead-title">Morning <span>Brief</span></div>
     <div class="masthead-meta">
-      <span>SUNDAY, MAY 17, 2026</span>
-      <span>No. 17</span>
-      <span>11 items today</span>
+      <span>MONDAY, MAY 18, 2026</span>
+      <span>No. 18</span>
+      <span>3 items today</span>
     </div>
   </header>
 
@@ -449,8 +504,8 @@
       <span class="section-label">Today's Edition</span>
       <div class="section-rule"></div>
     </div>
-    <h1 class="cover-headline">AI Stocks Surge, P&amp;C Tightens, and Hormuz Rattles Markets</h1>
-    <p class="cover-stand">AAOI and NBIS post breakout earnings as AI datacenter spending accelerates; California&#8217;s State Farm crackdown and South Carolina&#8217;s windshield reform signal a hardening P&amp;C regulatory climate; and the Strait of Hormuz blockade quietly reshapes every downstream risk calculation.</p>
+    <h1 class="cover-headline">The Solo Founder Era Goes Mainstream, and AI Gets Poked</h1>
+    <p class="cover-stand">Fortune puts the solo founder moment on record today, Chamath takes a pointed swing at Anthropic&#8217;s guardrails, and Nebius logs the kind of revenue numbers that make AI infrastructure feel very real. Today is about who is winning the AI era &#8212; and who might be getting left behind.</p>
   </section>
 
   <!-- ══ MARKETS ══ -->
@@ -461,41 +516,26 @@
     </div>
     <div class="markets-strip">
       <a href="https://www.tradingview.com/chart/?symbol=NASDAQ:NVDA" target="_blank" class="stock-card">
-        <div class="stock-card-header">
-          <span class="stock-ticker">NVDA</span>
-          <span class="stock-name">Nvidia</span>
-        </div>
-        <iframe
-          class="stock-chart"
-          src="https://s.tradingview.com/embed-widget/mini-symbol-overview/?symbol=NASDAQ%3ANVDA&locale=en&dateRange=1M&colorTheme=light&trendLineColor=%23b8401f&underLineColor=%23f4f2eb&isTransparent=true&autosize=true"
-          frameborder="0"
-          scrolling="no">
-        </iframe>
-      </a>
-      <a href="https://www.tradingview.com/chart/?symbol=NASDAQ:AAOI" target="_blank" class="stock-card">
-        <div class="stock-card-header">
-          <span class="stock-ticker">AAOI</span>
-          <span class="stock-name">Applied Optoelectronics</span>
-        </div>
-        <iframe
-          class="stock-chart"
-          src="https://s.tradingview.com/embed-widget/mini-symbol-overview/?symbol=NASDAQ%3AAAOI&locale=en&dateRange=1M&colorTheme=light&trendLineColor=%23b8401f&underLineColor=%23f4f2eb&isTransparent=true&autosize=true"
-          frameborder="0"
-          scrolling="no">
-        </iframe>
-      </a>
-      <a href="https://www.tradingview.com/chart/?symbol=NASDAQ:NBIS" target="_blank" class="stock-card">
-        <div class="stock-card-header">
-          <span class="stock-ticker">NBIS</span>
-          <span class="stock-name">Nebius Group</span>
-        </div>
-        <iframe
-          class="stock-chart"
-          src="https://s.tradingview.com/embed-widget/mini-symbol-overview/?symbol=NASDAQ%3ANBIS&locale=en&dateRange=1M&colorTheme=light&trendLineColor=%23b8401f&underLineColor=%23f4f2eb&isTransparent=true&autosize=true"
-          frameborder="0"
-          scrolling="no">
-        </iframe>
-      </a>
+  <div class="stock-card-header">
+    <span class="stock-ticker">NVDA</span>
+    <span class="stock-name">Nvidia</span>
+  </div>
+  <iframe class="stock-chart" src="https://s.tradingview.com/embed-widget/mini-symbol-overview/?symbol=NASDAQ%3ANVDA&locale=en&dateRange=1M&colorTheme=light&trendLineColor=%23b8401f&underLineColor=%23f4f2eb&isTransparent=true&autosize=true" frameborder="0" scrolling="no"></iframe>
+</a>
+<a href="https://www.tradingview.com/chart/?symbol=NASDAQ:AAOI" target="_blank" class="stock-card">
+  <div class="stock-card-header">
+    <span class="stock-ticker">AAOI</span>
+    <span class="stock-name">Applied Optoelectronics</span>
+  </div>
+  <iframe class="stock-chart" src="https://s.tradingview.com/embed-widget/mini-symbol-overview/?symbol=NASDAQ%3AAAOI&locale=en&dateRange=1M&colorTheme=light&trendLineColor=%23b8401f&underLineColor=%23f4f2eb&isTransparent=true&autosize=true" frameborder="0" scrolling="no"></iframe>
+</a>
+<a href="https://www.tradingview.com/chart/?symbol=NASDAQ:NBIS" target="_blank" class="stock-card">
+  <div class="stock-card-header">
+    <span class="stock-ticker">NBIS</span>
+    <span class="stock-name">Nebius Group</span>
+  </div>
+  <iframe class="stock-chart" src="https://s.tradingview.com/embed-widget/mini-symbol-overview/?symbol=NASDAQ%3ANBIS&locale=en&dateRange=1M&colorTheme=light&trendLineColor=%23b8401f&underLineColor=%23f4f2eb&isTransparent=true&autosize=true" frameborder="0" scrolling="no"></iframe>
+</a>
     </div>
   </section>
 
@@ -506,46 +546,25 @@
       <div class="section-rule"></div>
     </div>
     <div class="news-lead">
-      <div class="news-lead-source">StocksToTrade</div>
-      <a href="https://stockstotrade.com/news/applied-optoelectronics-inc-aaoi-news-2026_05_13/" target="_blank" class="news-lead-title">AAOI Stock Rockets As Analysts Hike AI-Driven Price Targets</a>
-      <p class="news-lead-summary">Applied Optoelectronics (AAOI) shares spiked 23.5% to $183.95 after Q1 2026 results, with Rosenblatt raising its price target to $220 (from $140) and Raymond James lifting its target to $160 (from $72.50, Outperform) &#8212; both citing the company&#8217;s AI datacenter optical transceiver ramp. AAOI reported $151.1M in Q1 revenue, locked in over $324M of 800G and 1.6T orders, and management guided optical transceiver revenue to $1.4B by Q3 2027. The sharp divergence in analyst targets ($25 low vs. $220 high) reflects a real tension between near-term losses and a massive long-term AI infrastructure opportunity worth tracking closely.</p>
+      <div class="news-lead-source">Fortune</div>
+      <a href="https://fortune.com/2026/05/18/solo-founders-ai-automation-entire-teams-entrepreneurs/" target="_blank" class="news-lead-title">AI Is Letting Solo Founders Run Companies That Used to Need Full Teams &#8212; With One Big Caveat</a>
+      <p class="news-lead-summary">Fortune reports that the 41 million U.S. solopreneurs are reshaping startup economics, with AI tools enabling founders like Maor Shlomo to build Base44 solo in four months &#8212; $1.5M in revenue, then an $80M exit to Wix. Monthly AI costs can reach hundreds of thousands of dollars, comparable to traditional salaries but equity-free. The model works cleanly for software; industries requiring compliance, enterprise relationships, or specialized domain depth remain stubbornly difficult to solo.</p>
     </div>
     <div class="news-grid">
       <div class="news-card">
-        <div class="news-card-source">TheStreet</div>
-        <a href="https://www.thestreet.com/investing/stocks/bank-of-america-raises-nebius-stock-price-target-ahead-of-earnings" target="_blank" class="news-card-title">Nebius Group (NBIS) Q1 2026 Revenue Soars 684% as Analysts Flood With Upgrades</a>
-        <p class="news-card-summary">Nebius Group reported Q1 2026 revenue of $399 million &#8212; a 684% year-over-year surge driven almost entirely by AI cloud demand &#8212; triggering a wave of analyst upgrades: Citi raised its target to $287, Citizens to $270, Bank of America to $240, and Northland to $248, all maintaining Buy or Outperform ratings. The consensus Buy rating across 11 analysts now carries an average price target near $176, with the high at $291. For investors tracking NBIS as an AI infrastructure play, the earnings print validates the bull case and sets up a new baseline for valuation models.</p>
-      </div>
-      <div class="news-card">
-        <div class="news-card-source">VentureBeat</div>
-        <a href="https://venturebeat.com/business/reserv-announces-125-million-series-c-financing-led-by-kkr-to-accelerate-ai-driven-transformation-of-insurance-claims" target="_blank" class="news-card-title">Reserv Announces $125 Million Series C Led by KKR to Transform AI-Driven P&amp;C Claims</a>
-        <p class="news-card-summary">Reserv, an AI-native third-party administrator (TPA) for P&amp;C insurance claims, closed a $125M Series C led by KKR on May 4, 2026, with participation from Bain Capital Ventures and Flourish Ventures. The company &#8212; founded in 2022, with $100M ARR and nearly 200 insurer and MGA clients &#8212; plans to scale its annual claims processing capacity from 500,000 complex claims today to 30 million over the next four years. This deal signals that institutional capital is betting big on AI automating the non-field commercial P&amp;C claims market, a direct disruption to traditional claims adjusting roles and workflows.</p>
-      </div>
-      <div class="news-card">
-        <div class="news-card-source">WRHI</div>
-        <a href="https://www.wrhi.com/2026/05/south-carolina-insurance-bill-targets-free-windshield-replacements-212255" target="_blank" class="news-card-title">South Carolina Insurance Bill Targets Free Windshield Replacements</a>
-        <p class="news-card-summary">South Carolina&#8217;s House Bill 4817 &#8212; the Insurance Rate Reduction and Policyholder Protection Act &#8212; has moved to the Senate Banking and Insurance Committee after passing the House, with provisions that would end the state&#8217;s 37-year-old mandatory zero-deductible windshield replacement benefit starting January 1, 2027. Under the bill, insurers must offer a zero-deductible option as a choice (not a mandate), and any applicable deductible would be capped at $100. The bill also expands the Department of Insurance&#8217;s fraud oversight authority and raises the property casualty excess premium tax credit from $1,250 to $3,000.</p>
-      </div>
-      <div class="news-card">
-        <div class="news-card-source">UN Trade and Development</div>
-        <a href="https://unctad.org/publication/global-trade-update-may-2026-invisible-barriers-costs-non-tariff-measures" target="_blank" class="news-card-title">Global Trade Update (May 2026): Invisible Barriers &#8212; The Costs of Non-Tariff Measures</a>
-        <p class="news-card-summary">UNCTAD&#8217;s May 2026 Global Trade Update finds that non-tariff measures (NTMs) &#8212; product regulations, mandatory standards, and certification requirements &#8212; now impose higher export costs than tariffs for 88% of countries, with the hidden cost equivalent to a 28% tariff when transparency is lacking. Least-developed countries lose roughly 10% of their G20 export volume simply from inability to comply with NTM requirements at the same level as other developing economies. For businesses navigating global supply chains, the report highlights that regulatory compliance strategy now matters as much as tariff management in trade planning.</p>
-      </div>
-      <div class="news-card">
-        <div class="news-card-source">Metropolitan Adjustment Bureau</div>
-        <a href="https://www.metroadjusters.com/new-california-insurance-laws-taking-effect-in-2026-what-policyholders-need-to-know/" target="_blank" class="news-card-title">New California and Texas Insurance Laws Taking Effect in 2026</a>
-        <p class="news-card-summary">Several major state insurance law changes are now in force for 2026: California&#8217;s Disaster Recovery Reform Act (SB 876) requires insurers to file disaster claims-handling plans and doubles penalties during declared emergencies, while Texas HB 2067 mandates quarterly reports on declined, canceled, or non-renewed policies. Louisiana now requires prominent prior-year premium display at renewal, and Georgia&#8217;s SB 69 restricts third-party litigation financing. These coordinated state-level moves reflect a national push for greater insurer accountability and rate transparency.</p>
-      </div>
-      <div class="news-card">
-        <div class="news-card-source">TechMoths</div>
-        <a href="https://www.techmoths.com/strategic-networking-career-growth/" target="_blank" class="news-card-title">Strategic Networking Drives 70% of Career Growth in 2026</a>
-        <p class="news-card-summary">Research cited in a 2026 career growth analysis finds that strategic networking &#8212; particularly with acquaintances and distant contacts rather than close friends &#8212; unlocks roughly 70% of job opportunities, because weak ties carry information and introductions that tight inner circles already share. The piece argues that early-career professionals should build their network before they need it, focus on genuine relationship-building around shared goals, and create visibility for their work through consistent documentation and communication. Practical tactics include scheduling informational interviews, joining professional associations, and building an active presence in industry-specific online communities.</p>
-      </div>
-      <div class="news-card">
-        <div class="news-card-source">Femme Hub</div>
-        <a href="https://www.femmehub.com/2026/04/27/young-professional-wealth-building/" target="_blank" class="news-card-title">Young Professional Wealth Building Strategies For Uncertain Markets</a>
-        <p class="news-card-summary">Published April 27, 2026, this piece lays out a concrete three-account framework for young professionals: an emergency fund (3&#8211;6 months expenses in a high-yield savings account), a retirement account prioritizing employer match first, and a taxable brokerage account for medium-term goals. It quantifies the cost of waiting &#8212; a 25-year-old investing $240/month at 9% annual return reaches $1M by 65, but delaying a decade requires dramatically higher monthly contributions. The core message: at this career stage, the goal is wealth accumulation not preservation, and consistent early action in all three accounts is the highest-leverage financial move available.</p>
-      </div>
+  <div class="news-card-source">Benzinga</div>
+  <a href="https://www.benzinga.com/markets/tech/26/05/52624458/chamath-palihapitiya-warns-anthropic-risks-becoming-friendster-of-the-ai-era-after-claude-refuses-stock-screening-prompt" target="_blank" class="news-card-title">Chamath Says Anthropic Is One &#8216;Friendster Moment&#8217; Away from Irrelevance</a>
+  <p class="news-card-summary">Chamath Palihapitiya publicly benchmarked Claude against a stock screening prompt it declined to run, then called Anthropic the &#8220;Friendster of AI&#8221; &#8212; implying they will be eclipsed by a less restricted competitor the way Friendster lost to Facebook. The post generated significant press pickup from Benzinga and others, amplifying what was a pointed VC critique into broader industry commentary. The subtext: Claude&#8217;s safety guardrails are being used as a market-share argument by rivals.</p>
+  <p class="news-card-take">This is a coordinated narrative &#8212; positioning Claude&#8217;s refusals as a business weakness rather than a safety choice &#8212; and it will work on enterprise buyers who have already switched to Grok for edge cases.</p>
+  <p class="news-card-angle">&#9997; Write about how AI tool choice is becoming a positioning signal for startup culture: the founders who pick Claude vs. GPT vs. Grok are signaling something about risk tolerance and compliance posture to investors and enterprise customers.</p>
+</div>
+<div class="news-card">
+  <div class="news-card-source">Yahoo Finance</div>
+  <a href="https://finance.yahoo.com/markets/stocks/articles/nebius-group-nbis-14-6-090809742.html" target="_blank" class="news-card-title">Nebius Group Surges 14.6% as $27B Meta Deal Confirms AI Infrastructure Demand</a>
+  <p class="news-card-summary">Nebius Group (NBIS) jumped after reporting Q1 revenue of $399 million &#8212; a 684% year-over-year increase &#8212; and announcing a $27 billion, five-year contractual partnership with Meta. The company, which pivoted to AI cloud infrastructure with Nvidia backing, has surged over 110% year-to-date and increased 2026 CapEx guidance to $20&#8211;25 billion. D.A. Davidson has taken a neutral stance, flagging valuation with a PE over 4,000, but analyst consensus remains &#8220;Buy.&#8221;</p>
+  <p class="news-card-take">A company posting 684% revenue growth with a $27B locked contract is not a bet on AI&#8217;s future &#8212; it is the receipts that hyperscaler demand for compute is real, durable, and still accelerating.</p>
+  <p class="news-card-angle">&#9997; Write about what the Nebius story means for infrastructure-layer startup timing: is 2026 the last window to build a defensible AI infrastructure business before hyperscalers cut off the oxygen?</p>
+</div>
     </div>
   </section>
 
@@ -555,49 +574,25 @@
       <span class="section-label">Social</span>
       <div class="section-rule"></div>
     </div>
-    <div class="social-sentiment">Cautiously anxious &#8212; markets are buzzing over AI infrastructure dominance and a breakout AI cloud stock, while the Hormuz crisis amplifies geopolitical unease and California&#8217;s crackdown on State Farm signals a hardening insurance regulatory climate.</div>
-    <blockquote class="social-pullquote">&#8220;The game theory in AI has shifted. Having a leading foundational model is important, but increasingly, it is the zoning-approved, powered land that is the gating bottleneck. Add turnkey access to silicon, and it&#8217;s checkmate.&#8221; &#8212; @chamath</blockquote>
+    <div class="social-sentiment">15% positive &middot; 30% neutral &middot; 55% negative</div>
+    <blockquote class="social-pullquote">&#8220;Anthropic needs to solve the computer/power problem or they will be the Friendster of the AI era.&#8221; &#8212; @chamath</blockquote>
     <div class="social-threads">
       <div class="thread-card">
-        <div class="thread-meta">
-          <span class="thread-platform">Twitter</span>
-          <span>@chamath</span>
-        </div>
-        <a href="https://www.benzinga.com/markets/tech/26/05/52624458/chamath-palihapitiya-warns-anthropic-risks-becoming-friendster-of-the-ai-era-after-claude-refuses-stock-screening-prompt" target="_blank" class="thread-title">Chamath: &#8216;Anthropic risks becoming the Friendster of the AI era&#8217; &#8212; power &amp; compute are the real moat</a>
-        <p class="thread-summary">Chamath Palihapitiya argues the AI race has shifted from model quality to physical infrastructure &#8212; zoning-approved land, power access, and GPU clusters &#8212; after testing Claude and finding it refused a stock screening task. A pointed warning for anyone tracking AI-sector investments and insurtech exposure to compute costs.</p>
-      </div>
-      <div class="thread-card">
-        <div class="thread-meta">
-          <span class="thread-platform">Twitter</span>
-          <span>@chamath</span>
-        </div>
-        <a href="https://x.com/chamath/status/2032348022336864731" target="_blank" class="thread-title">Chamath: &#8216;In 2026, AI drives 10x individual productivity &#8212; but productive individuals don&#8217;t make productive firms&#8217;</a>
-        <p class="thread-summary">A sharp observation that AI-enabled individual productivity hasn&#8217;t yet translated into organizational productivity &#8212; &#8216;we&#8217;ve swapped the motor but haven&#8217;t redesigned the factory.&#8217; Highly relevant for founders, operators, and anyone thinking about workflow and team transformation.</p>
-      </div>
-      <div class="thread-card">
-        <div class="thread-meta">
-          <span class="thread-platform">Reddit</span>
-          <span>r/insurance</span>
-        </div>
-        <a href="https://www.insurance.ca.gov/0400-news/0100-press-releases/2026/release019-2026.cfm" target="_blank" class="thread-title">California takes legal action against State Farm over widespread mishandling of 2025 LA wildfire claims</a>
-        <p class="thread-summary">California&#8217;s Insurance Department found nearly 400 violations in 220 randomly audited State Farm claims &#8212; delayed investigations, low settlements, and denied smoke-damage tests &#8212; and is seeking the largest post-disaster penalties this century, with a potential license suspension. A landmark moment for state P&amp;C insurance regulation and carrier accountability.</p>
-      </div>
-      <div class="thread-card">
-        <div class="thread-meta">
-          <span class="thread-platform">Reddit</span>
-          <span>r/stocks</span>
-        </div>
-        <a href="https://www.timothysykes.com/news/nebius-group-nv-nbis-news-2026_05_14/" target="_blank" class="thread-title">NBIS surges 32% post-earnings: Nebius Group posts $399M Q1 revenue, 684% YoY growth, $27B Meta deal</a>
-        <p class="thread-summary">Nebius Group &#8212; the Nvidia-backed AI cloud play &#8212; blew past Q1 estimates with $399M in revenue and a 684% year-over-year jump, driven by a $27B five-year contract with Meta. NBIS is up 120%+ YTD with a Wall Street Strong Buy consensus, making it the hottest AI infrastructure story outside Nvidia itself.</p>
-      </div>
-      <div class="thread-card">
-        <div class="thread-meta">
-          <span class="thread-platform">Reddit</span>
-          <span>r/geopolitics</span>
-        </div>
-        <a href="https://www.euronews.com/business/2026/05/12/global-trades-next-top-priority-bypassing-the-hormuz-chokepoint" target="_blank" class="thread-title">2026 Strait of Hormuz crisis: Iran&#8217;s blockade is &#8216;the largest supply disruption in the history of the global oil market&#8217;</a>
-        <p class="thread-summary">Since Iran closed the Strait of Hormuz in March 2026 following US-Israeli strikes, QatarEnergy force-majeured all LNG shipments (removing 20% of global LNG overnight) and major carriers are rerouting around the Cape of Good Hope. The ripple effects on energy prices, inflation, and supply chain costs directly touch insurance risk, personal finance, and trade policy.</p>
-      </div>
+  <div class="thread-meta">
+    <span class="thread-platform">twitter</span>
+    <span>@chamath</span>
+  </div>
+  <a href="https://www.benzinga.com/markets/tech/26/05/52624458/chamath-palihapitiya-warns-anthropic-risks-becoming-friendster-of-the-ai-era-after-claude-refuses-stock-screening-prompt" target="_blank" class="thread-title">Chamath Warns Anthropic Risks Becoming the Friendster of AI</a>
+  <p class="thread-summary">The VC/tech community is using this public benchmarking moment to pressure Anthropic on safety guardrails vs. utility &#8212; sentiment is sharply critical of Claude refusals. The market is rewarding raw capability over caution, and Claude&#8217;s enterprise reputation is actively being contested by peers who pick Grok or Gemini when Claude declines.</p>
+</div>
+<div class="thread-card">
+  <div class="thread-meta">
+    <span class="thread-platform">twitter</span>
+    <span>@chamath</span>
+  </div>
+  <a href="https://www.benzinga.com/markets/tech/26/05/52624574/chamath-palihapitiya-says-taiwan-loses-strategic-importance-in-18-months-we-are-probably-one-to-two-nanometers-away" target="_blank" class="thread-title">Chamath Says Taiwan Loses Strategic Importance in 18 Months</a>
+  <p class="thread-summary">Experts piled on with unusually sharp rebuttals calling the take strategically and morally impoverished &#8212; revealing a split between Silicon Valley&#8217;s chip-centric risk calculus and traditional security frameworks. A proxy debate for founders on whether the US semiconductor buildout is real enough to plan around.</p>
+</div>
     </div>
   </section>
 
@@ -614,31 +609,31 @@
         <div class="art-artist">Edward Hopper (American, 1882&#8211;1967)</div>
         <div class="art-date">1942</div>
         <div class="art-medium">Oil on canvas</div>
-        <p class="art-note">Rendered in oil on canvas in 1942, this Modernist work depicts an urban nocturnal scene &#8212; silhouetted diners at a late-night counter viewed through plate glass from the empty street outside. Hopper&#8217;s composition balances architectural space with isolated human presence, drawing on subjects of dining and city life to distill a distinctly American mood of solitude amid society.</p>
+        <p class="art-note">Hopper placed three customers and a server inside an all-night diner, their figures isolated by the geometry around them &#8212; no entrance, no debris on the streets, nothing extraneous to the composition. The warm glow of electric light set against the dark exterior creates a tension between warmth and isolation, visibility and disconnection. This Modernist arrangement, spare in its subjects of architecture, people, and view through glass, renders an ordinary urban scene both serene and quietly enigmatic.</p>
       </div>
       <div class="art-card">
-        <img src="https://www.artic.edu/iiif/2/b272df73-a965-ac37-4172-be4e99483637/full/1600,/0/default.jpg" alt="American Gothic">
-        <div class="art-title">American Gothic</div>
-        <div class="art-artist">Grant Wood (American, 1891&#8211;1942)</div>
-        <div class="art-date">1930</div>
-        <div class="art-medium">Oil on Beaver Board</div>
-        <p class="art-note">Executed in oil on Beaver Board in 1930, this Realist-Modernist work presents two figures rooted in agricultural life &#8212; their postures, period fashion, and architectural backdrop rendered with exacting precision. Wood&#8217;s treatment of farm life and rural portraiture constructs a concentrated image of American regional identity during the Depression era.</p>
-      </div>
-      <div class="art-card">
-        <img src="https://www.artic.edu/iiif/2/c477bcd1-8fd2-b164-7d63-f9d10cc2993c/full/1600,/0/default.jpg" alt="Autumn">
-        <div class="art-title">Autumn</div>
-        <div class="art-artist">Wilson H. Irvine (American, 1869&#8211;1936)</div>
-        <div class="art-date">c. 1914</div>
+        <img src="https://www.artic.edu/iiif/2/3ee54063-9d78-ee86-0103-b477d988a93f/full/1600,/0/default.jpg" alt="Blue and Green Music">
+        <div class="art-title">Blue and Green Music</div>
+        <div class="art-artist">Georgia O&#8217;Keeffe (American, 1887&#8211;1986)</div>
+        <div class="art-date">1919&#8211;21</div>
         <div class="art-medium">Oil on canvas</div>
-        <p class="art-note">Painted in oil on canvas around 1914 and explicitly classified within the American Scene and Impressionism styles, this work brings a broken-brushwork sensibility to the American landscape tradition. Irvine&#8217;s autumnal subject reflects early-twentieth-century interest in regional scenery as a vehicle for national identity and seasonal feeling.</p>
+        <p class="art-note">Painted to explore &#8220;the idea that music could be translated into something for the eye,&#8221; O&#8217;Keeffe used color and abstracted form to simultaneously suggest the natural world and the experience of sound. Working within Modernism&#8217;s rejection of strict representation, she drew on Vasily Kandinsky&#8217;s argument that visual art could achieve pure expression free of literary reference. Without named subjects, blues and greens shift between landscape and abstraction, occupying the threshold between what is seen and what is heard.</p>
       </div>
       <div class="art-card">
-        <img src="https://www.artic.edu/iiif/2/f7b2db45-f393-653c-07ef-84319b0cdb92/full/1600,/0/default.jpg" alt="Croquet Scene">
-        <div class="art-title">Croquet Scene</div>
-        <div class="art-artist">Winslow Homer (American, 1836&#8211;1910)</div>
-        <div class="art-date">1866</div>
+        <img src="https://www.artic.edu/iiif/2/1bbf95fa-2182-af0d-1e5d-9a3025e53fab/full/1600,/0/default.jpg" alt="Thanksgiving">
+        <div class="art-title">Thanksgiving</div>
+        <div class="art-artist">Doris Lee (American, 1904&#8211;1983)</div>
+        <div class="art-date">c. 1935</div>
         <div class="art-medium">Oil on canvas</div>
-        <p class="art-note">Rendered in oil on canvas in 1866, this Impressionist-Realist work by Winslow Homer captures fashionably dressed men and women at leisure on a croquet lawn. Homer&#8217;s attention to fabric, figure, and open-air light places the subjects within the genteel leisure culture of post-Civil War America, using genre subjects &#8212; fashion, leisure, social ritual &#8212; to observe with a reportorial eye.</p>
+        <p class="art-note">Painted in a deliberately cartoon-like Modernist manner, this bustling oil on canvas depicts women preparing a Thanksgiving feast and became a national flashpoint when it won the Art Institute&#8217;s prestigious Logan Purchase Prize in 1935. The prize donor condemned the broad, exaggerated style as &#8220;too modern,&#8221; founding the conservative &#8220;Sanity in Art&#8221; movement in protest &#8212; a reaction that backfired and brought Illinois-born Doris Lee national fame. Executed during the Great Depression, the subject matter of rural custom, family, and holiday celebration carried particular resonance for struggling Americans.</p>
+      </div>
+      <div class="art-card">
+        <img src="https://www.artic.edu/iiif/2/aa2b57e9-3773-03c1-0fb4-0135e7358dc6/full/1600,/0/default.jpg" alt="Picture of Dorian Gray">
+        <div class="art-title">Picture of Dorian Gray</div>
+        <div class="art-artist">Ivan Albright (American, 1897&#8211;1983)</div>
+        <div class="art-date">1943&#8211;44</div>
+        <div class="art-medium">Oil on canvas</div>
+        <p class="art-note">Chicago artist Ivan Albright painted this grisly portrait for the 1945 film adaptation of Oscar Wilde&#8217;s novel, where it appeared in vivid Technicolor against the otherwise black-and-white film &#8212; a deliberately shocking contrast. Working across both Surrealism and Modernism, Albright rendered the subjects of portraiture and people through a lens of macabre fascination, creating an image designed to simultaneously attract and repulse. When the portrait was exhibited at the Art Institute, the Chicago Tribune reported the museum was &#8220;having a heck of a time handling the crowds flocking to see his painting.&#8221;</p>
       </div>
     </div>
   </section>
@@ -650,39 +645,19 @@
       <div class="section-rule"></div>
     </div>
     <div class="substack-list">
-      <div class="newsletter-card">
-        <div>
-          <div class="newsletter-sender">App Economy Insights</div>
-          <span class="newsletter-title">PRO: This Week in Visuals</span>
-          <p class="newsletter-summary">A chart-driven visual recap of earnings and market data spanning ARAMCO, Cisco, Applied Materials, Nu Holdings, JD.com, Circle, Datadog, On Running, Hims &amp; Hers, Global-E Online, and Monday.com. The PRO edition packages key financial metrics across growth stocks for investors tracking performance at a glance.</p>
-        </div>
-        <div class="newsletter-date">May 16</div>
-      </div>
-      <div class="newsletter-card">
-        <div>
-          <div class="newsletter-sender">Rise and Recap</div>
-          <span class="newsletter-title">Average Student Loan Defaulter Is .... 40 | Good News For Chocolate Lovers | Stop Spiking Your Morning Cortisol</span>
-          <p class="newsletter-summary">New data reveals the average student loan defaulter is now 40 years old &#8212; a finding with implications for how personal finance and career planning intersect across generations, not just among recent graduates. The issue also covers tips on avoiding morning cortisol spikes, a growing area of interest in personal health optimization and mindset.</p>
-        </div>
-        <div class="newsletter-date">May 16</div>
-      </div>
-      <div class="newsletter-card">
-        <div>
-          <div class="newsletter-sender">Daily Passport</div>
-          <span class="newsletter-title">The Most Affordable States To Retire In</span>
-          <p class="newsletter-summary">Daily Passport ranks the 10 most affordable U.S. states to retire in for 2026, focusing on cost-of-living factors relevant to retirement planning and long-term financial relocation decisions. A useful reference point for early-career professionals thinking ahead about where wealth accumulation leads.</p>
-        </div>
-        <div class="newsletter-date">May 17</div>
-      </div>
+      
     </div>
   </section>
+
+  <!-- ══ PODCASTS — entire section injected; omitted when has_episodes is false ══ -->
+  
 
   <!-- ══ COLOPHON ══ -->
   <footer class="colophon">
     <div class="colophon-left">
       <span class="colophon-brand">Morning Brief</span>
-      <span>8 articles &middot; 3 newsletters &middot; 0 episodes</span>
-      <span>Art curated from the Art Institute of Chicago &#8212; american scene painting rotation</span>
+      <span>3 articles &middot; 0 newsletters</span>
+      <span>Art curated from the Art Institute of Chicago &#8212; modernism rotation</span>
     </div>
     <span>&copy; 2026 &middot; afang2027</span>
   </footer>
