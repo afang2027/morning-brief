@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Morning Brief — Monday, May 18, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #faf9f5;
+      --ink: #1a1a1a;
+      --accent: #b8401f;
+      --muted: #6b6560;
+      --border: #e0ddd4;
+      --card-bg: #f4f2eb;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 16px;
+      line-height: 1.6;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    /* ── Masthead ── */
+    .masthead {
+      border-top: 3px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      padding: 20px 0 16px;
+      margin: 32px 0 0;
+      text-align: center;
+    }
+    .masthead-kicker {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .masthead-title {
+      font-size: 56px;
+      font-style: italic;
+      font-weight: normal;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      color: var(--ink);
+    }
+    .masthead-title span { color: var(--accent); }
+    .masthead-meta {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+    }
+
+    /* ── Section headers ── */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 48px 0 20px;
+    }
+    .section-label {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+    .section-rule { flex: 1; height: 1px; background: var(--border); }
+
+    /* ── Cover ── */
+    .cover {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 32px;
+      margin-bottom: 8px;
+    }
+    .cover-headline {
+      font-size: 38px;
+      font-style: italic;
+      font-weight: normal;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+    .cover-stand {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--muted);
+      max-width: 640px;
+    }
+
+    /* ── Markets ── */
+    .markets-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+    }
+    .stock-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      text-decoration: none;
+      display: block;
+      transition: border-color 0.15s;
+    }
+    .stock-card:hover { border-color: var(--accent); }
+    .stock-card-header {
+      padding: 10px 12px 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .stock-ticker {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--ink);
+    }
+    .stock-name {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 10px;
+      color: var(--muted);
+    }
+    .stock-chart { width: 100%; height: 120px; border: none; display: block; }
+
+    /* ── News lead ── */
+    .news-lead {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 28px;
+      margin-bottom: 24px;
+    }
+    .news-lead-source {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .news-lead-title {
+      font-size: 28px;
+      font-style: italic;
+      font-weight: normal;
+      line-height: 1.25;
+      color: var(--ink);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 12px;
+    }
+    .news-lead-title:hover { color: var(--accent); }
+    .news-lead-summary {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    /* ── News grid ── */
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .news-card { border-top: 2px solid var(--border); padding-top: 16px; }
+    .news-card-source {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .news-card-title {
+      font-size: 16px;
+      font-style: italic;
+      line-height: 1.3;
+      color: var(--ink);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .news-card-title:hover { color: var(--accent); }
+    .news-card-summary {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+
+    /* ── Social ── */
+    .social-sentiment {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .social-pullquote {
+      border-left: 3px solid var(--accent);
+      padding: 4px 0 4px 20px;
+      font-size: 22px;
+      font-style: italic;
+      line-height: 1.4;
+      color: var(--ink);
+      margin-bottom: 28px;
+    }
+    .social-threads { display: flex; flex-direction: column; gap: 16px; }
+    .thread-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 16px;
+    }
+    .thread-meta {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 10px;
+      color: var(--muted);
+      margin-bottom: 8px;
+      display: flex;
+      gap: 12px;
+    }
+    .thread-platform {
+      color: var(--accent);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .thread-title {
+      font-size: 15px;
+      line-height: 1.4;
+      color: var(--ink);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .thread-title:hover { color: var(--accent); }
+    .thread-summary {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+
+    /* ── Art ── */
+    .art-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .art-card img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+      margin-bottom: 12px;
+    }
+    .art-title { font-size: 15px; font-style: italic; color: var(--ink); margin-bottom: 4px; }
+    .art-artist {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 2px;
+    }
+    .art-date {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 10px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .art-medium {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 10px;
+      font-style: italic;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .art-note {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 12px;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+
+    /* ── Substack ── */
+    .substack-list { display: flex; flex-direction: column; gap: 0; }
+    .newsletter-card {
+      border-top: 1px solid var(--border);
+      padding: 16px 0;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: start;
+    }
+    .newsletter-sender {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+    .newsletter-title {
+      font-size: 16px;
+      font-style: italic;
+      color: var(--ink);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    .newsletter-title:hover { color: var(--accent); }
+    .newsletter-summary {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+    .newsletter-date {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 10px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    /* ── Podcasts ── */
+    .podcast-list { display: flex; flex-direction: column; gap: 16px; }
+    .podcast-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 16px;
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+    .podcast-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--accent);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .podcast-icon svg { width: 20px; height: 20px; fill: white; }
+    .podcast-show {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+    .podcast-title {
+      font-size: 15px;
+      font-style: italic;
+      color: var(--ink);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+    .podcast-title:hover { color: var(--accent); }
+    .podcast-meta {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .podcast-summary {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+
+    /* ── News card extras ── */
+    .news-card-take {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 11px;
+      line-height: 1.5;
+      color: var(--accent);
+      margin-top: 6px;
+    }
+    .news-card-angle {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 11px;
+      line-height: 1.5;
+      color: var(--muted);
+      font-style: italic;
+      margin-top: 4px;
+    }
+
+    /* ── Newsletter card extras ── */
+    .newsletter-insight {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--accent);
+      margin-top: 6px;
+    }
+    .newsletter-angle {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 11px;
+      line-height: 1.5;
+      color: var(--muted);
+      font-style: italic;
+      margin-top: 4px;
+    }
+
+    /* ── Podcast key moments ── */
+    .podcast-moments {
+      list-style: none;
+      margin-top: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .podcast-moments li {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .moment-time {
+      font-weight: 600;
+      color: var(--accent);
+      margin-right: 6px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* ── Colophon ── */
+    .colophon {
+      border-top: 1px solid var(--border);
+      margin-top: 64px;
+      padding-top: 24px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 11px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .colophon-left { display: flex; flex-direction: column; gap: 4px; }
+    .colophon-brand { font-style: italic; font-family: Georgia, serif; font-size: 13px; color: var(--ink); }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      body { padding: 0 16px 60px; }
+      .masthead-title { font-size: 36px; }
+      .cover-headline { font-size: 26px; }
+      .art-grid { grid-template-columns: 1fr; }
+      .markets-strip { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+      .newsletter-card { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ MASTHEAD ══ -->
+  <header class="masthead">
+    <div class="masthead-kicker">Your personal daily intelligence</div>
+    <div class="masthead-title">Morning <span>Brief</span></div>
+    <div class="masthead-meta">
+      <span>MONDAY, MAY 18, 2026</span>
+      <span>No. 18</span>
+      <span>3 items today</span>
+    </div>
+  </header>
+
+  <!-- ══ COVER ══ -->
+  <section class="cover">
+    <div class="section-header">
+      <span class="section-label">Today's Edition</span>
+      <div class="section-rule"></div>
+    </div>
+    <h1 class="cover-headline">The Solo Founder Era Goes Mainstream, and AI Gets Poked</h1>
+    <p class="cover-stand">Fortune puts the solo founder moment on record today, Chamath takes a pointed swing at Anthropic&#8217;s guardrails, and Nebius logs the kind of revenue numbers that make AI infrastructure feel very real. Today is about who is winning the AI era &#8212; and who might be getting left behind.</p>
+  </section>
+
+  <!-- ══ MARKETS ══ -->
+  <section>
+    <div class="section-header">
+      <span class="section-label">Markets</span>
+      <div class="section-rule"></div>
+    </div>
+    <div class="markets-strip">
+      <a href="https://www.tradingview.com/chart/?symbol=NASDAQ:NVDA" target="_blank" class="stock-card">
+  <div class="stock-card-header">
+    <span class="stock-ticker">NVDA</span>
+    <span class="stock-name">Nvidia</span>
+  </div>
+  <iframe class="stock-chart" src="https://s.tradingview.com/embed-widget/mini-symbol-overview/?symbol=NASDAQ%3ANVDA&locale=en&dateRange=1M&colorTheme=light&trendLineColor=%23b8401f&underLineColor=%23f4f2eb&isTransparent=true&autosize=true" frameborder="0" scrolling="no"></iframe>
+</a>
+<a href="https://www.tradingview.com/chart/?symbol=NASDAQ:AAOI" target="_blank" class="stock-card">
+  <div class="stock-card-header">
+    <span class="stock-ticker">AAOI</span>
+    <span class="stock-name">Applied Optoelectronics</span>
+  </div>
+  <iframe class="stock-chart" src="https://s.tradingview.com/embed-widget/mini-symbol-overview/?symbol=NASDAQ%3AAAOI&locale=en&dateRange=1M&colorTheme=light&trendLineColor=%23b8401f&underLineColor=%23f4f2eb&isTransparent=true&autosize=true" frameborder="0" scrolling="no"></iframe>
+</a>
+<a href="https://www.tradingview.com/chart/?symbol=NASDAQ:NBIS" target="_blank" class="stock-card">
+  <div class="stock-card-header">
+    <span class="stock-ticker">NBIS</span>
+    <span class="stock-name">Nebius Group</span>
+  </div>
+  <iframe class="stock-chart" src="https://s.tradingview.com/embed-widget/mini-symbol-overview/?symbol=NASDAQ%3ANBIS&locale=en&dateRange=1M&colorTheme=light&trendLineColor=%23b8401f&underLineColor=%23f4f2eb&isTransparent=true&autosize=true" frameborder="0" scrolling="no"></iframe>
+</a>
+    </div>
+  </section>
+
+  <!-- ══ NEWS ══ -->
+  <section>
+    <div class="section-header">
+      <span class="section-label">News</span>
+      <div class="section-rule"></div>
+    </div>
+    <div class="news-lead">
+      <div class="news-lead-source">Fortune</div>
+      <a href="https://fortune.com/2026/05/18/solo-founders-ai-automation-entire-teams-entrepreneurs/" target="_blank" class="news-lead-title">AI Is Letting Solo Founders Run Companies That Used to Need Full Teams &#8212; With One Big Caveat</a>
+      <p class="news-lead-summary">Fortune reports that the 41 million U.S. solopreneurs are reshaping startup economics, with AI tools enabling founders like Maor Shlomo to build Base44 solo in four months &#8212; $1.5M in revenue, then an $80M exit to Wix. Monthly AI costs can reach hundreds of thousands of dollars, comparable to traditional salaries but equity-free. The model works cleanly for software; industries requiring compliance, enterprise relationships, or specialized domain depth remain stubbornly difficult to solo.</p>
+    </div>
+    <div class="news-grid">
+      <div class="news-card">
+  <div class="news-card-source">Benzinga</div>
+  <a href="https://www.benzinga.com/markets/tech/26/05/52624458/chamath-palihapitiya-warns-anthropic-risks-becoming-friendster-of-the-ai-era-after-claude-refuses-stock-screening-prompt" target="_blank" class="news-card-title">Chamath Says Anthropic Is One &#8216;Friendster Moment&#8217; Away from Irrelevance</a>
+  <p class="news-card-summary">Chamath Palihapitiya publicly benchmarked Claude against a stock screening prompt it declined to run, then called Anthropic the &#8220;Friendster of AI&#8221; &#8212; implying they will be eclipsed by a less restricted competitor the way Friendster lost to Facebook. The post generated significant press pickup from Benzinga and others, amplifying what was a pointed VC critique into broader industry commentary. The subtext: Claude&#8217;s safety guardrails are being used as a market-share argument by rivals.</p>
+  <p class="news-card-take">This is a coordinated narrative &#8212; positioning Claude&#8217;s refusals as a business weakness rather than a safety choice &#8212; and it will work on enterprise buyers who have already switched to Grok for edge cases.</p>
+  <p class="news-card-angle">&#9997; Write about how AI tool choice is becoming a positioning signal for startup culture: the founders who pick Claude vs. GPT vs. Grok are signaling something about risk tolerance and compliance posture to investors and enterprise customers.</p>
+</div>
+<div class="news-card">
+  <div class="news-card-source">Yahoo Finance</div>
+  <a href="https://finance.yahoo.com/markets/stocks/articles/nebius-group-nbis-14-6-090809742.html" target="_blank" class="news-card-title">Nebius Group Surges 14.6% as $27B Meta Deal Confirms AI Infrastructure Demand</a>
+  <p class="news-card-summary">Nebius Group (NBIS) jumped after reporting Q1 revenue of $399 million &#8212; a 684% year-over-year increase &#8212; and announcing a $27 billion, five-year contractual partnership with Meta. The company, which pivoted to AI cloud infrastructure with Nvidia backing, has surged over 110% year-to-date and increased 2026 CapEx guidance to $20&#8211;25 billion. D.A. Davidson has taken a neutral stance, flagging valuation with a PE over 4,000, but analyst consensus remains &#8220;Buy.&#8221;</p>
+  <p class="news-card-take">A company posting 684% revenue growth with a $27B locked contract is not a bet on AI&#8217;s future &#8212; it is the receipts that hyperscaler demand for compute is real, durable, and still accelerating.</p>
+  <p class="news-card-angle">&#9997; Write about what the Nebius story means for infrastructure-layer startup timing: is 2026 the last window to build a defensible AI infrastructure business before hyperscalers cut off the oxygen?</p>
+</div>
+    </div>
+  </section>
+
+  <!-- ══ SOCIAL ══ -->
+  <section>
+    <div class="section-header">
+      <span class="section-label">Social</span>
+      <div class="section-rule"></div>
+    </div>
+    <div class="social-sentiment">15% positive &middot; 30% neutral &middot; 55% negative</div>
+    <blockquote class="social-pullquote">&#8220;Anthropic needs to solve the computer/power problem or they will be the Friendster of the AI era.&#8221; &#8212; @chamath</blockquote>
+    <div class="social-threads">
+      <div class="thread-card">
+  <div class="thread-meta">
+    <span class="thread-platform">twitter</span>
+    <span>@chamath</span>
+  </div>
+  <a href="https://www.benzinga.com/markets/tech/26/05/52624458/chamath-palihapitiya-warns-anthropic-risks-becoming-friendster-of-the-ai-era-after-claude-refuses-stock-screening-prompt" target="_blank" class="thread-title">Chamath Warns Anthropic Risks Becoming the Friendster of AI</a>
+  <p class="thread-summary">The VC/tech community is using this public benchmarking moment to pressure Anthropic on safety guardrails vs. utility &#8212; sentiment is sharply critical of Claude refusals. The market is rewarding raw capability over caution, and Claude&#8217;s enterprise reputation is actively being contested by peers who pick Grok or Gemini when Claude declines.</p>
+</div>
+<div class="thread-card">
+  <div class="thread-meta">
+    <span class="thread-platform">twitter</span>
+    <span>@chamath</span>
+  </div>
+  <a href="https://www.benzinga.com/markets/tech/26/05/52624574/chamath-palihapitiya-says-taiwan-loses-strategic-importance-in-18-months-we-are-probably-one-to-two-nanometers-away" target="_blank" class="thread-title">Chamath Says Taiwan Loses Strategic Importance in 18 Months</a>
+  <p class="thread-summary">Experts piled on with unusually sharp rebuttals calling the take strategically and morally impoverished &#8212; revealing a split between Silicon Valley&#8217;s chip-centric risk calculus and traditional security frameworks. A proxy debate for founders on whether the US semiconductor buildout is real enough to plan around.</p>
+</div>
+    </div>
+  </section>
+
+  <!-- ══ ART ══ -->
+  <section>
+    <div class="section-header">
+      <span class="section-label">Art of the Day</span>
+      <div class="section-rule"></div>
+    </div>
+    <div class="art-grid">
+      <div class="art-card">
+        <img src="https://www.artic.edu/iiif/2/831a05de-d3f6-f4fa-a460-23008dd58dda/full/1600,/0/default.jpg" alt="Nighthawks">
+        <div class="art-title">Nighthawks</div>
+        <div class="art-artist">Edward Hopper (American, 1882&#8211;1967)</div>
+        <div class="art-date">1942</div>
+        <div class="art-medium">Oil on canvas</div>
+        <p class="art-note">Hopper placed three customers and a server inside an all-night diner, their figures isolated by the geometry around them &#8212; no entrance, no debris on the streets, nothing extraneous to the composition. The warm glow of electric light set against the dark exterior creates a tension between warmth and isolation, visibility and disconnection. This Modernist arrangement, spare in its subjects of architecture, people, and view through glass, renders an ordinary urban scene both serene and quietly enigmatic.</p>
+      </div>
+      <div class="art-card">
+        <img src="https://www.artic.edu/iiif/2/3ee54063-9d78-ee86-0103-b477d988a93f/full/1600,/0/default.jpg" alt="Blue and Green Music">
+        <div class="art-title">Blue and Green Music</div>
+        <div class="art-artist">Georgia O&#8217;Keeffe (American, 1887&#8211;1986)</div>
+        <div class="art-date">1919&#8211;21</div>
+        <div class="art-medium">Oil on canvas</div>
+        <p class="art-note">Painted to explore &#8220;the idea that music could be translated into something for the eye,&#8221; O&#8217;Keeffe used color and abstracted form to simultaneously suggest the natural world and the experience of sound. Working within Modernism&#8217;s rejection of strict representation, she drew on Vasily Kandinsky&#8217;s argument that visual art could achieve pure expression free of literary reference. Without named subjects, blues and greens shift between landscape and abstraction, occupying the threshold between what is seen and what is heard.</p>
+      </div>
+      <div class="art-card">
+        <img src="https://www.artic.edu/iiif/2/1bbf95fa-2182-af0d-1e5d-9a3025e53fab/full/1600,/0/default.jpg" alt="Thanksgiving">
+        <div class="art-title">Thanksgiving</div>
+        <div class="art-artist">Doris Lee (American, 1904&#8211;1983)</div>
+        <div class="art-date">c. 1935</div>
+        <div class="art-medium">Oil on canvas</div>
+        <p class="art-note">Painted in a deliberately cartoon-like Modernist manner, this bustling oil on canvas depicts women preparing a Thanksgiving feast and became a national flashpoint when it won the Art Institute&#8217;s prestigious Logan Purchase Prize in 1935. The prize donor condemned the broad, exaggerated style as &#8220;too modern,&#8221; founding the conservative &#8220;Sanity in Art&#8221; movement in protest &#8212; a reaction that backfired and brought Illinois-born Doris Lee national fame. Executed during the Great Depression, the subject matter of rural custom, family, and holiday celebration carried particular resonance for struggling Americans.</p>
+      </div>
+      <div class="art-card">
+        <img src="https://www.artic.edu/iiif/2/aa2b57e9-3773-03c1-0fb4-0135e7358dc6/full/1600,/0/default.jpg" alt="Picture of Dorian Gray">
+        <div class="art-title">Picture of Dorian Gray</div>
+        <div class="art-artist">Ivan Albright (American, 1897&#8211;1983)</div>
+        <div class="art-date">1943&#8211;44</div>
+        <div class="art-medium">Oil on canvas</div>
+        <p class="art-note">Chicago artist Ivan Albright painted this grisly portrait for the 1945 film adaptation of Oscar Wilde&#8217;s novel, where it appeared in vivid Technicolor against the otherwise black-and-white film &#8212; a deliberately shocking contrast. Working across both Surrealism and Modernism, Albright rendered the subjects of portraiture and people through a lens of macabre fascination, creating an image designed to simultaneously attract and repulse. When the portrait was exhibited at the Art Institute, the Chicago Tribune reported the museum was &#8220;having a heck of a time handling the crowds flocking to see his painting.&#8221;</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SUBSTACK ══ -->
+  <section>
+    <div class="section-header">
+      <span class="section-label">Newsletters</span>
+      <div class="section-rule"></div>
+    </div>
+    <div class="substack-list">
+      
+    </div>
+  </section>
+
+  <!-- ══ PODCASTS — entire section injected; omitted when has_episodes is false ══ -->
+  
+
+  <!-- ══ COLOPHON ══ -->
+  <footer class="colophon">
+    <div class="colophon-left">
+      <span class="colophon-brand">Morning Brief</span>
+      <span>3 articles &middot; 0 newsletters</span>
+      <span>Art curated from the Art Institute of Chicago &#8212; modernism rotation</span>
+    </div>
+    <span>&copy; 2026 &middot; afang2027</span>
+  </footer>
+
+</body>
+</html>
