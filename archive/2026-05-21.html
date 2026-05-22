@@ -1,0 +1,736 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Morning Brief — Thursday, May 21, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #faf9f5;
+      --ink: #1a1a1a;
+      --accent: #c2567a;
+      --muted: #6b6560;
+      --border: #e0ddd4;
+      --card-bg: #f4f2eb;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 16px;
+      line-height: 1.6;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    /* ── Masthead ── */
+    .masthead {
+      border-top: 3px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      padding: 20px 0 16px;
+      margin: 32px 0 0;
+      text-align: center;
+    }
+    .masthead-kicker {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .masthead-title {
+      font-size: 56px;
+      font-style: italic;
+      font-weight: normal;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      color: var(--ink);
+    }
+    .masthead-title span { color: var(--accent); }
+    .masthead-meta {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+    }
+
+    /* ── Section headers ── */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 48px 0 20px;
+    }
+    .section-label {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+    .section-rule { flex: 1; height: 1px; background: var(--border); }
+
+    /* ── Cover ── */
+    .cover {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 32px;
+      margin-bottom: 8px;
+    }
+    .cover-headline {
+      font-size: 38px;
+      font-style: italic;
+      font-weight: normal;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+    .cover-stand {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--muted);
+      max-width: 640px;
+    }
+
+    /* ── Markets ── */
+    .markets-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+    }
+    .stock-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      text-decoration: none;
+      display: block;
+      transition: border-color 0.15s;
+    }
+    .stock-card:hover { border-color: var(--accent); }
+    .stock-card-header {
+      padding: 10px 12px 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .stock-ticker {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--ink);
+    }
+    .stock-name {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 10px;
+      color: var(--muted);
+    }
+    .stock-chart { width: 100%; height: 120px; border: none; display: block; }
+
+    /* ── News lead ── */
+    .news-lead {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 28px;
+      margin-bottom: 24px;
+    }
+    .news-lead-source {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .news-lead-title {
+      font-size: 28px;
+      font-style: italic;
+      font-weight: normal;
+      line-height: 1.25;
+      color: var(--ink);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 12px;
+    }
+    .news-lead-title:hover { color: var(--accent); }
+    .news-lead-summary {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    /* ── News grid ── */
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .news-card { border-top: 2px solid var(--border); padding-top: 16px; }
+    .news-card-source {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .news-card-title {
+      font-size: 16px;
+      font-style: italic;
+      line-height: 1.3;
+      color: var(--ink);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .news-card-title:hover { color: var(--accent); }
+    .news-card-summary {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+
+    /* ── Social ── */
+    .social-sentiment {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .social-pullquote {
+      border-left: 3px solid var(--accent);
+      padding: 4px 0 4px 20px;
+      font-size: 22px;
+      font-style: italic;
+      line-height: 1.4;
+      color: var(--ink);
+      margin-bottom: 28px;
+    }
+    .social-threads { display: flex; flex-direction: column; gap: 16px; }
+    .thread-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 16px;
+    }
+    .thread-meta {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 10px;
+      color: var(--muted);
+      margin-bottom: 8px;
+      display: flex;
+      gap: 12px;
+    }
+    .thread-platform {
+      color: var(--accent);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .thread-title {
+      font-size: 15px;
+      line-height: 1.4;
+      color: var(--ink);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .thread-title:hover { color: var(--accent); }
+    .thread-summary {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+
+    /* ── Art ── */
+    .art-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .art-card img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+      margin-bottom: 12px;
+    }
+    .art-title { font-size: 15px; font-style: italic; color: var(--ink); margin-bottom: 4px; }
+    .art-artist {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 2px;
+    }
+    .art-date {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 10px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .art-medium {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 10px;
+      font-style: italic;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .art-note {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 12px;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+
+    /* ── Substack ── */
+    .substack-list { display: flex; flex-direction: column; gap: 0; }
+    .newsletter-card {
+      border-top: 1px solid var(--border);
+      padding: 16px 0;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: start;
+    }
+    .newsletter-sender {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+    .newsletter-title {
+      font-size: 16px;
+      font-style: italic;
+      color: var(--ink);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    .newsletter-title:hover { color: var(--accent); }
+    .newsletter-summary {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+    .newsletter-date {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 10px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    /* ── Podcasts ── */
+    .podcast-list { display: flex; flex-direction: column; gap: 16px; }
+    .podcast-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 16px;
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+    .podcast-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--accent);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .podcast-icon svg { width: 20px; height: 20px; fill: white; }
+    .podcast-show {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+    .podcast-title {
+      font-size: 15px;
+      font-style: italic;
+      color: var(--ink);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+    .podcast-title:hover { color: var(--accent); }
+    .podcast-meta {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .podcast-summary {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+
+    /* ── News card extras ── */
+    .news-card-take {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 11px;
+      line-height: 1.5;
+      color: var(--accent);
+      margin-top: 6px;
+    }
+    .news-card-angle {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 11px;
+      line-height: 1.5;
+      color: var(--muted);
+      font-style: italic;
+      margin-top: 4px;
+    }
+
+    /* ── Newsletter card extras ── */
+    .newsletter-insight {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--accent);
+      margin-top: 6px;
+    }
+    .newsletter-angle {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 11px;
+      line-height: 1.5;
+      color: var(--muted);
+      font-style: italic;
+      margin-top: 4px;
+    }
+
+    /* ── Podcast key moments ── */
+    .podcast-moments {
+      list-style: none;
+      margin-top: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .podcast-moments li {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .moment-time {
+      font-weight: 600;
+      color: var(--accent);
+      margin-right: 6px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* ── Colophon ── */
+    .colophon {
+      border-top: 1px solid var(--border);
+      margin-top: 64px;
+      padding-top: 24px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 11px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .colophon-left { display: flex; flex-direction: column; gap: 4px; }
+    .colophon-brand { font-style: italic; font-family: Georgia, serif; font-size: 13px; color: var(--ink); }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      body { padding: 0 16px 60px; }
+      .masthead-title { font-size: 36px; }
+      .cover-headline { font-size: 26px; }
+      .art-grid { grid-template-columns: 1fr; }
+      .markets-strip { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+      .newsletter-card { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ MASTHEAD ══ -->
+  <header class="masthead">
+    <div class="masthead-kicker">Your personal daily intelligence</div>
+    <div class="masthead-title">Morning <span>Brief</span></div>
+    <div class="masthead-meta">
+      <span>THURSDAY, MAY 21, 2026</span>
+      <span>No. 21</span>
+      <span>7 items today</span>
+    </div>
+  </header>
+
+  <!-- ══ COVER ══ -->
+  <section class="cover">
+    <div class="section-header">
+      <span class="section-label">Today's Edition</span>
+      <div class="section-rule"></div>
+    </div>
+    <h1 class="cover-headline">Nvidia&#8217;s Record Quarter, Tort Reform&#8217;s Proof, and the $12K Founder Stack</h1>
+    <p class="cover-stand">Nvidia&#8217;s $81.6B quarter confirms AI infrastructure capex is now industrial-scale &#8212; which means tooling costs keep falling. Meanwhile, Florida&#8217;s tort reform blueprint is attracting new P&amp;C carriers, and the documented solo founder stack now runs at under $12K/year. Three separate signals pointing the same direction.</p>
+  </section>
+
+  <!-- ══ MARKETS ══ -->
+  <section>
+    <div class="section-header">
+      <span class="section-label">Markets</span>
+      <div class="section-rule"></div>
+    </div>
+    <div class="markets-strip">
+      <a href="https://www.tradingview.com/chart/?symbol=NASDAQ:NVDA" target="_blank" class="stock-card"><div class="stock-card-header"><span class="stock-ticker">NVDA</span><span class="stock-name">Nvidia</span></div><iframe class="stock-chart" src="https://s.tradingview.com/embed-widget/mini-symbol-overview/?symbol=NASDAQ%3ANVDA&locale=en&dateRange=1M&colorTheme=light&trendLineColor=%23c2567a&underLineColor=%23f4f2eb&isTransparent=true&autosize=true" frameborder="0" scrolling="no"></iframe></a><a href="https://www.tradingview.com/chart/?symbol=NASDAQ:AAOI" target="_blank" class="stock-card"><div class="stock-card-header"><span class="stock-ticker">AAOI</span><span class="stock-name">Applied Optoelectronics</span></div><iframe class="stock-chart" src="https://s.tradingview.com/embed-widget/mini-symbol-overview/?symbol=NASDAQ%3AAAOI&locale=en&dateRange=1M&colorTheme=light&trendLineColor=%23c2567a&underLineColor=%23f4f2eb&isTransparent=true&autosize=true" frameborder="0" scrolling="no"></iframe></a><a href="https://www.tradingview.com/chart/?symbol=NASDAQ:NBIS" target="_blank" class="stock-card"><div class="stock-card-header"><span class="stock-ticker">NBIS</span><span class="stock-name">Nebius Group</span></div><iframe class="stock-chart" src="https://s.tradingview.com/embed-widget/mini-symbol-overview/?symbol=NASDAQ%3ANBIS&locale=en&dateRange=1M&colorTheme=light&trendLineColor=%23c2567a&underLineColor=%23f4f2eb&isTransparent=true&autosize=true" frameborder="0" scrolling="no"></iframe></a>
+    </div>
+  </section>
+
+  <!-- ══ NEWS ══ -->
+  <section>
+    <div class="section-header">
+      <span class="section-label">News</span>
+      <div class="section-rule"></div>
+    </div>
+    <div class="news-lead">
+      <div class="news-lead-source">Crunchbase News</div>
+      <a href="https://news.crunchbase.com/venture/data-capital-concentrating-faster-startups-100m-ai/" target="_blank" class="news-lead-title">Venture Capital Has Never Been More Concentrated &#8212; 75% of Q1 2026 Dollars Went to Five Companies</a>
+      <p class="news-lead-summary">Crunchbase data reveals that roughly $195.6 billion &#8212; about 75% of all Q1 2026 global VC deal value &#8212; went to just five companies: OpenAI, Anthropic, xAI, Waymo, and Databricks. Deal count fell 15% quarter-over-quarter to approximately 7,000 globally, the lowest level since late 2016 and 61% below the 2022 peak. Sub-$100M rounds held steady in aggregate dollars but the attention and signal value of VC validation has migrated almost entirely to the AI mega-deal tier.</p>
+    </div>
+    <div class="news-grid">
+      <div class="news-card">
+  <div class="news-card-source">Computerworld</div>
+  <a href="https://www.computerworld.com/article/4175860/eu-moves-forward-on-5-8b-scale-up-fund-to-keep-startups-from-leaving.html" target="_blank" class="news-card-title">EU Commits $5.8 Billion to Stop Startups From Fleeing to the US</a>
+  <p class="news-card-summary">The European Commission selected EQT to manage a new &#8364;5B Scaleup Europe Fund to keep high-growth European startups from relocating to the US for growth capital. The fund targets companies past seed but before IPO readiness &#8212; the gap where European founders have historically faced a cliff of available capital. First investments are expected in autumn 2026.</p>
+  <p class="news-card-take">When a $5.8B fund is the policy response to founders leaving, it confirms that access to capital is still geographic destiny &#8212; and that US-based solo founders hold a structural advantage they are systematically underestimating.</p>
+  <p class="news-card-angle">&#9999; Write a post mapping the invisible advantages US-based solo founders have that European counterparts are willing to cross oceans to access &#8212; and what the EU fund reveals about the structural gaps that still exist.</p>
+</div>
+<div class="news-card">
+  <div class="news-card-source">Insurance CIO Outlook</div>
+  <a href="https://www.insuranceciooutlook.com/news/the-future-of-insurtech" target="_blank" class="news-card-title">InsurTech Has Moved Past Disruption &#8212; Infrastructure and Carrier Integration Are Now the Play</a>
+  <p class="news-card-summary">The insurtech sector has decisively shifted from disrupting carriers to strengthening the infrastructure that makes them more efficient and profitable. The sector peaked at over $15B in global funding in 2021; investors and incumbents are now aligned around sustainability over growth-at-all-costs. Winners are platforms that embed deeply into carrier workflows rather than position against them.</p>
+  <p class="news-card-take">InsurTech&#8217;s pivot from disruption to infrastructure means the entry point for new insurtech products is now a carrier partnership, not a consumer pitch.</p>
+  <p class="news-card-angle">&#9999; Write a post for B2B founders targeting insurance: how to position an insurtech product in a market where &#8216;we disrupt carriers&#8217; is a red flag and &#8216;we make your underwriting team 40% faster&#8217; closes deals.</p>
+</div>
+<div class="news-card">
+  <div class="news-card-source">Florida Today</div>
+  <a href="https://www.floridatoday.com/story/news/2026/05/20/three-new-property-insurers-enter-florida-market/" target="_blank" class="news-card-title">Three New Property Insurers Enter Florida &#8212; The Clearest Sign Yet That Tort Reform Works</a>
+  <p class="news-card-summary">Three new property insurance carriers announced market entry into Florida in May 2026, citing the improved litigation environment following its 2022&#8211;2023 tort reform package. The new capacity follows years of carrier exits driven by assignment of benefits abuse and runaway litigation costs. Florida&#8217;s Insurance Commissioner confirmed these represent genuine new risk appetite, not rebrands.</p>
+  <p class="news-card-take">Florida&#8217;s new carrier entries are the most actionable data point yet for other stressed coastal markets: supply-side capacity follows legislative reform, and any state that replicates Florida&#8217;s tort changes should expect similar carrier re-entry.</p>
+  <p class="news-card-angle">&#9999; Map which southeastern states are one legislative session away from a Florida-style carrier re-entry &#8212; and what distribution or MGA product to build now to be positioned when that capacity arrives.</p>
+</div>
+    </div>
+  </section>
+
+  <!-- ══ SOCIAL ══ -->
+  <section>
+    <div class="section-header">
+      <span class="section-label">Social</span>
+      <div class="section-rule"></div>
+    </div>
+    <div class="social-sentiment">42% positive &middot; 33% neutral &middot; 25% negative</div>
+    <blockquote class="social-pullquote">&#8220;The new buyer on the internet is an AI agent. Imagine billions of new customers showing up with money to spend but they only shop via MCP.&#8221;<br><small style="font-size:13px;font-style:normal;">&#8212; @gregisenberg</small></blockquote>
+    <div class="social-threads">
+      <div class="thread-card">
+  <div class="thread-meta"><span class="thread-platform">twitter</span><span>@ArkkDaily</span></div>
+  <a href="https://x.com/ArkkDaily/status/2028536552440115501" target="_blank" class="thread-title">Nvidia Q1 Earnings Smash Records: $81.6B Revenue, Data Center Up 92% &#8212; Huang Declares &#8216;Largest Infrastructure Buildout in Human History&#8217;</a>
+  <p class="thread-summary">Nvidia posted record $81.6B quarterly revenue with data center at $75.2B, crushing consensus. Huang&#8217;s framing of AI as global factory infrastructure signals this is no longer speculative capex &#8212; it&#8217;s industrial. For solo founders, this is a green light: the picks-and-shovels layer is funded and scaling, meaning AI tooling costs will keep falling while capability compounds.</p>
+</div>
+<div class="thread-card">
+  <div class="thread-meta"><span class="thread-platform">twitter</span><span>@gregisenberg</span></div>
+  <a href="https://x.com/gregisenberg/status/2054584280848769413" target="_blank" class="thread-title">Greg Isenberg: The New Buyer Is an AI Agent &#8212; Build for MCP or Get Left Out</a>
+  <p class="thread-summary">Isenberg&#8217;s thread argues the next commerce layer is agent-to-agent, with AI buyers transacting through MCP protocols &#8212; making distribution strategy, not product quality, the moat. Building MCP-accessible services or agent-native products positions you in front of a demand wave before most incumbents notice it.</p>
+</div>
+<div class="thread-card">
+  <div class="thread-meta"><span class="thread-platform">twitter</span><span>@chamath</span></div>
+  <a href="https://x.com/chamath/status/1950673622059667764" target="_blank" class="thread-title">Chamath: Energy Is the Next AI Bottleneck &#8212; Power Crunch Could Cripple OpenAI and Anthropic</a>
+  <p class="thread-summary">Palihapitiya&#8217;s warning that power infrastructure &#8212; not model quality &#8212; will determine AI winners in the next phase reframes competitive analysis for founders. If tier-1 labs face energy constraints, inference costs and availability could become unpredictable. Solo founders building on AI APIs should consider multi-provider redundancy and watch energy-constrained pricing as a risk to their unit economics.</p>
+</div>
+<div class="thread-card">
+  <div class="thread-meta"><span class="thread-platform">reddit</span><span>r/stocks</span></div>
+  <a href="https://fortune.com/2026/05/05/coinbase-layoffs-14-of-employees-ai-tech-ai-job-anxiety-crypto/" target="_blank" class="thread-title">Coinbase Lays Off 700, Replacing Roles With AI-Native Pods &#8212; CEO Warns Mass Layoffs Coming to Every Company</a>
+  <p class="thread-summary">r/stocks is actively digesting Coinbase&#8217;s structural reorganization as a leading indicator of sector-wide AI-driven headcount compression &#8212; over 92,000 tech jobs cut in 2026 so far. The narrative shift is from &#8216;AI augments teams&#8217; to &#8216;AI replaces layers.&#8217; For solo founders: more skilled freelance talent flooding the market at lower cost, and enterprise clients more open than ever to lean, AI-powered vendor relationships.</p>
+</div>
+<div class="thread-card">
+  <div class="thread-meta"><span class="thread-platform">reddit</span><span>r/Entrepreneur</span></div>
+  <a href="https://www.contextstudios.ai/blog/polsia-how-a-solo-founder-hit-1m-arr-in-30-days-with-ai-agents" target="_blank" class="thread-title">Solo Founder Ben Broca Hits $1M ARR in 30 Days Using AI Agents &#8212; Zero Employees, 1,100 Autonomous Companies</a>
+  <p class="thread-summary">The Polsia story is circulating heavily as concrete proof the one-person unicorn thesis has arrived. Broca&#8217;s $49/month product runs 1,100 autonomous client companies using Claude as the AI CEO &#8212; showing the model is repeatable, not a fluke. The template is clear: productize agent orchestration for a niche market, price for volume, and let infrastructure margins do the work.</p>
+</div>
+<div class="thread-card">
+  <div class="thread-meta"><span class="thread-platform">twitter</span><span>@alvinfoo</span></div>
+  <a href="https://x.com/alvinfoo/status/2040976716857032855" target="_blank" class="thread-title">The Full Solo Founder Stack Now Costs Under $12K/Year &#8212; With 60&#8211;80% Operating Margins</a>
+  <p class="thread-summary">A widely-shared breakdown of the complete solo founder AI stack puts concrete numbers to the structural cost collapse. The $3K&#8211;$12K/year fully-loaded stack with 60&#8211;80% operating margins is now documented and reproducible. Founders comparing this against hiring even one mid-level engineer are doing the math and going solo.</p>
+</div>
+<div class="thread-card">
+  <div class="thread-meta"><span class="thread-platform">reddit</span><span>r/personalfinance</span></div>
+  <a href="https://www.nbcnews.com/business/markets/markets-closing-numbers-monday-moodys-us-credit-downgrade-rcna207730" target="_blank" class="thread-title">Moody&#8217;s Downgrades US to Aa1 &#8212; Mortgage Rates Hit 7.04%, Treasury Yield Spikes to 5.01%</a>
+  <p class="thread-summary">r/personalfinance turned anxious after Moody&#8217;s stripped the US of its last Aaa rating, with mortgage rate spikes immediately affecting real consumers. Most discussions have shifted from investing to cash preservation and emergency fund building. For founders, the macro signal is that consumer discretionary spending faces new headwinds &#8212; price sensitivity in your market is likely increasing.</p>
+</div>
+<div class="thread-card">
+  <div class="thread-meta"><span class="thread-platform">reddit</span><span>r/insurance</span></div>
+  <a href="https://insurify.com/car-insurance/reddit-car-insurance/" target="_blank" class="thread-title">Insurance Premiums Remain Elevated in 2026 &#8212; Natural Disasters and Claims Inflation Keep Rates High</a>
+  <p class="thread-summary">r/insurance discussions continue to center on sticker shock: consumers report auto and home premiums still climbing as insurers reprice years of catastrophe losses. The most-upvoted advice is aggressive comparison shopping and negotiation for long-tenure policyholders. For founders in fintech or insurance-adjacent spaces, the pain point is real and unresolved &#8212; clear demand for tools that help consumers navigate pricing opacity.</p>
+</div>
+<div class="thread-card">
+  <div class="thread-meta"><span class="thread-platform">reddit</span><span>r/geopolitics</span></div>
+  <a href="https://www.scmp.com/news/china/diplomacy/article/3308500/how-trump-deal-pakistan-could-derail-indias-warming-china-ties" target="_blank" class="thread-title">India-Pakistan Conflict Aftermath: Chinese Engineers Were On-Site With Pakistan Air Force During Engagement</a>
+  <p class="thread-summary">Reports that Chinese engineers provided on-site support to Pakistan during the aerial engagement marks a significant escalation in China&#8217;s willingness to display hard-power alignment publicly. Combined with the US-China summit dynamics, r/geopolitics is generating high engagement about new multipolar alliance formations. For founders with global supply chains or international SaaS customers, South and Southeast Asian market risk is rising in ways that require scenario planning.</p>
+</div>
+<div class="thread-card">
+  <div class="thread-meta"><span class="thread-platform">twitter</span><span>@Tawheed</span></div>
+  <a href="https://x.com/Tawheed/status/2011191296309019027" target="_blank" class="thread-title">SaaS Is Dead. Long Live SaaS &#8212; In 2026, It&#8217;s OK to Call Yourself a SaaS Founder Again</a>
+  <p class="thread-summary">TK Kader&#8217;s thread diagnoses the VC overcorrection of 2025, when &#8216;AI-first&#8217; became mandatory label inflation, and argues 2026 is restoring pragmatic identity to founders building real recurring-revenue businesses. The community signal: investors are maturing past buzzword requirements and rewarding execution again. For solo founders, this is permission to drop the identity performance and double down on product fundamentals and cash flow.</p>
+</div>
+    </div>
+  </section>
+
+  <!-- ══ ART ══ -->
+  <section>
+    <div class="section-header">
+      <span class="section-label">Art of the Day</span>
+      <div class="section-rule"></div>
+    </div>
+    <div class="art-grid">
+      <div class="art-card">
+        <img src="https://www.artic.edu/iiif/2/4a04138f-43d8-cd9f-5ac4-478cd8828210/full/1600,/0/default.jpg" alt="Trompe-l&#8217;&#338;il Still Life with a Flower Garland and a Curtain">
+        <div class="art-title">Trompe-l&#8217;&#338;il Still Life with a Flower Garland and a Curtain</div>
+        <div class="art-artist">Adriaen van der Spelt and Frans van Mieris, Dutch/Flemish, 17th century</div>
+        <div class="art-date">1658</div>
+        <div class="art-medium">Oil on panel</div>
+        <p class="art-note">A masterpiece of trompe-l&#8217;&#339;il illusionism: van der Spelt painted the flower garland and van Mieris added the blue silk curtain being drawn aside, together creating a fiction within a fiction. The curtain &#8212; itself a painted object &#8212; appears to partially conceal the flowers behind it, playing with the viewer&#8217;s perception of depth and surface. The combination of two artists working in distinct registers makes this a rare collaborative demonstration of the genre&#8217;s possibilities.</p>
+      </div>
+      <div class="art-card">
+        <img src="https://www.artic.edu/iiif/2/574695d5-6bf3-fe58-a1d5-e6cbb5e10c77/full/1600,/0/default.jpg" alt="Still Life">
+        <div class="art-title">Still Life</div>
+        <div class="art-artist">Pieter Claesz, Dutch, c. 1597&#8211;1660</div>
+        <div class="art-date">c. 1636</div>
+        <div class="art-medium">Oil on panel</div>
+        <p class="art-note">Claesz was the master of the &#8216;ontbijtje&#8217; &#8212; the breakfast piece &#8212; and this example typifies his restrained palette and close attention to reflective surfaces. A pewter plate, a glass roemer, and simple foods are arranged on a table edge with a pale, unified light that dissolves shadows into atmosphere. The apparent simplicity is the achievement: Claesz made ordinary objects the occasion for extraordinary observation.</p>
+      </div>
+      <div class="art-card">
+        <img src="https://www.artic.edu/iiif/2/0cbe27e8-2fec-3445-bc48-ce40a8f2dc25/full/1600,/0/default.jpg" alt="Fish (Still Life)">
+        <div class="art-title">Fish (Still Life)</div>
+        <div class="art-artist">&#201;douard Manet, French, 1832&#8211;1883</div>
+        <div class="art-date">c. 1864</div>
+        <div class="art-medium">Oil on canvas</div>
+        <p class="art-note">Manet returned to the still life genre throughout his career, and this fish painting shows his characteristic disregard for conventional finish &#8212; the brushwork is deliberate and visible, prioritizing immediacy over polish. The fish are rendered with the same directness Manet applied to his figure paintings: observed without sentimentality, placed in light without apology. For Manet, even a market table could be the occasion for a formal statement.</p>
+      </div>
+      <div class="art-card">
+        <img src="https://www.artic.edu/iiif/2/d9bde524-38b2-4262-3338-e4d06a50746d/full/1600,/0/default.jpg" alt="Still Life with Dead Game, Fruits, and Vegetables in a Market">
+        <div class="art-title">Still Life with Dead Game, Fruits, and Vegetables in a Market</div>
+        <div class="art-artist">Frans Snyders, Flemish, 1579&#8211;1657</div>
+        <div class="art-date">1614</div>
+        <div class="art-medium">Oil on canvas</div>
+        <p class="art-note">Snyders was the pre-eminent painter of Flemish market scenes, and this large canvas is a deliberate exercise in abundance &#8212; game birds, vegetables, and fruit piled with the confidence of a market stall at peak season. The composition is organized by weight and color rather than strict geometry, giving the whole a tumbling vitality. Snyders collaborated regularly with Rubens, and the theatrical scale and drama of the arrangement reflects that studio environment.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SUBSTACK ══ -->
+  <section>
+    <div class="section-header">
+      <span class="section-label">Newsletters</span>
+      <div class="section-rule"></div>
+    </div>
+    <div class="substack-list">
+      
+    </div>
+  </section>
+
+  <!-- ══ PODCASTS — entire section injected; omitted when has_episodes is false ══ -->
+  <section>
+  <div class="section-header">
+    <span class="section-label">Podcasts</span>
+    <div class="section-rule"></div>
+  </div>
+  <div class="podcast-list">
+    <div class="podcast-card">
+      <div class="podcast-icon"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18A9 9 0 0 0 12 3zm-1 13V8l6 4-6 4z"/></svg></div>
+      <div>
+        <div class="podcast-show">Build with Leila Hormozi</div>
+        <a href="https://pscrb.fm/rss/p/episodes.captivate.fm/episode/006c4dfa-ffb0-488f-a4b3-19db22d21115.mp3" target="_blank" class="podcast-title">How Rapid Growth Almost Destroyed My Company</a>
+        <div class="podcast-meta">Leila Hormozi &middot; 9 min &middot; May 19</div>
+        <p class="podcast-summary">Leila Hormozi recounts how hitting $50M in revenue nearly broke her business, revealing that rapid growth without operational infrastructure amplifies problems rather than solving them. She breaks down why culture must function as an enforced operational system &#8212; not a set of values on a wall &#8212; and how tolerating even one bad actor corrodes team performance at scale. The through-line: systems are prerequisites for scale, without them growth just means more founder hours.</p>
+        <ul class="podcast-moments">
+          <li><span class="moment-time">00:01:30</span> The moment hitting $50M on paper still meant the business was fragile &#8212; weak systems make growth dangerous, not safe</li>
+          <li><span class="moment-time">00:04:10</span> Culture as an operational system: why enforcement mechanisms (not mission statements) determine whether values are real</li>
+          <li><span class="moment-time">00:07:00</span> Removing the founder from critical paths &#8212; practical steps to stop being the bottleneck before scaling breaks you</li>
+        </ul>
+      </div>
+    </div>
+    <div class="podcast-card">
+      <div class="podcast-icon"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18A9 9 0 0 0 12 3zm-1 13V8l6 4-6 4z"/></svg></div>
+      <div>
+        <div class="podcast-show">This Week in Startups</div>
+        <a href="https://anchor.fm/s/7c624c84/podcast/play/gen-z-rage-against-the-ai-machine" target="_blank" class="podcast-title">Gen Z Rage Against the (AI) Machine</a>
+        <div class="podcast-meta">Jason Calacanis &middot; 69 min &middot; May 18</div>
+        <p class="podcast-summary">Jason Calacanis and Alex Wilhelm dissect why Gen Z views AI as a betrayal rather than simply a threat &#8212; feeling double-crossed by institutions that praised AI while it reshaped the job market they were promised. The episode digs into The Information&#8217;s report that Anthropic and OpenAI capture nearly 90% of all startup AI revenue, a signal with major implications for any B2B founder choosing an AI infrastructure partner. They also examine Stanford student discourse on learning in a post-ChatGPT world, surfacing cultural headwinds B2B and prosumer AI products face with younger buyers.</p>
+        <ul class="podcast-moments">
+          <li><span class="moment-time">00:08:00</span> Why Gen Z experiences AI as betrayal, not just threat &#8212; and what that means for adoption in prosumer and SMB products targeting younger users</li>
+          <li><span class="moment-time">00:28:00</span> Anthropic and OpenAI capturing ~90% of startup AI revenue: market concentration data every B2B AI builder needs to understand</li>
+          <li><span class="moment-time">00:52:00</span> Flock Safety&#8217;s surveillance network and the Stanford post-ChatGPT essay &#8212; cultural and regulatory signals shaping the AI landscape</li>
+        </ul>
+      </div>
+    </div>
+    <div class="podcast-card">
+      <div class="podcast-icon"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18A9 9 0 0 0 12 3zm-1 13V8l6 4-6 4z"/></svg></div>
+      <div>
+        <div class="podcast-show">This Week in Startups</div>
+        <a href="https://anchor.fm/s/7c624c84/podcast/play/mercurys-ceo-on-shifting-from-fintech-to-full-banking" target="_blank" class="podcast-title">Mercury&#8217;s CEO on Shifting from Fintech to Full Banking</a>
+        <div class="podcast-meta">Jason Calacanis &middot; 98 min &middot; May 20</div>
+        <p class="podcast-summary">Mercury CEO Immad Akhund explains why obtaining a national banking charter is a strategic necessity for controlling the infrastructure that 300,000+ startup customers depend on, not just a compliance milestone. The conversation covers Mercury&#8217;s path to $650M annualized revenue while staying GAAP profitable for four consecutive years &#8212; a rare combination Akhund attributes to disciplined product focus. For solo founders, Akhund&#8217;s framing of AI-driven business formation (Q1 2026 new US business applications up 18% YoY) and Mercury&#8217;s new AI-native financial tools offer a window into the infrastructure being built for one-person companies.</p>
+        <ul class="podcast-moments">
+          <li><span class="moment-time">00:15:00</span> Why Mercury pursued a banking charter: controlling payment rails, Zelle, and lending to stop depending on third-party infrastructure</li>
+          <li><span class="moment-time">00:48:00</span> How Mercury reached $650M ARR with four years of GAAP profitability &#8212; the product and pricing discipline behind the numbers</li>
+          <li><span class="moment-time">01:18:00</span> Mercury Command and AI-native financial tools: natural language financial management, and the 18% YoY surge in new business applications</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- ══ COLOPHON ══ -->
+  <footer class="colophon">
+    <div class="colophon-left">
+      <span class="colophon-brand">Morning Brief</span>
+      <span>4 articles &middot; 0 newsletters &middot; 3 episodes</span>
+      <span>Art curated from the Art Institute of Chicago &#8212; still life rotation</span>
+    </div>
+    <span>&copy; 2026 &middot; afang2027</span>
+  </footer>
+
+</body>
+</html>
